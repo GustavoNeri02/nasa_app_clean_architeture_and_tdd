@@ -5,6 +5,7 @@ import 'package:nasa_app_clean_architeture_and_tdd/core/erros/failures.dart';
 
 import 'package:dartz/dartz.dart';
 
+import '../../../core/erros/exceptions.dart';
 import '../../domain/repositories/space_media_repository.dart';
 
 class SpaceMediaRepositoryImplementation implements ISpaceMediaRepository {
@@ -19,7 +20,8 @@ class SpaceMediaRepositoryImplementation implements ISpaceMediaRepository {
     try {
       final result = await dataSource.getSpaceMediaFromDate(date);
       return Right(result);
-    } on Exception {
+      // ignore: empty_catches
+    } on ServerException {
       return Left(ServerFailure());
     }
   }

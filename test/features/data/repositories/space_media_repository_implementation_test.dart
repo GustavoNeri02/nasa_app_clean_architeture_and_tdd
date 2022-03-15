@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:nasa_app_clean_architeture_and_tdd/core/erros/exceptions.dart';
+import 'package:nasa_app_clean_architeture_and_tdd/core/erros/failures.dart';
 import 'package:nasa_app_clean_architeture_and_tdd/features/data/datasources/space_media_data_source.dart';
 import 'package:nasa_app_clean_architeture_and_tdd/features/data/models/space_media_model.dart';
 import 'package:nasa_app_clean_architeture_and_tdd/features/data/repositories/space_media_repository_implementation.dart';
@@ -45,6 +47,19 @@ Meteors can be colorful. While the human eye usually cannot discern many colors,
     final result = await repository.getSpaceMediaFromDate(tDate);
     // Assert
     expect(result, const Right(tSpaceMediaModel));
+    verify(() => dataSource.getSpaceMediaFromDate(tDate)).called(1);
+  });
+
+  test(
+      'should return a server failure when the call to datasource is unsuccessful',
+      () async {
+    // Arrange
+    when(() => dataSource.getSpaceMediaFromDate(tDate))
+        .thenThrow(ServerException());
+    // Act
+    final result = await repository.getSpaceMediaFromDate(tDate);
+    // Assert
+    expect(result, Left(ServerFailure()));
     verify(() => dataSource.getSpaceMediaFromDate(tDate)).called(1);
   });
 }
