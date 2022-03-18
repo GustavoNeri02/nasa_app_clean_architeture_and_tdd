@@ -11,11 +11,6 @@ import '../widgets/image_network_with_loader.dart';
 class PicturePage extends StatefulWidget {
   late final DateTime? dateSelected;
 
-  PicturePage({
-    Key? key,
-    this.dateSelected,
-  }) : super(key: key);
-
   PicturePage.fromArgs(dynamic arguments, {Key? key}) : super(key: key) {
     dateSelected = arguments.data['dateSelected'];
   }
@@ -68,7 +63,7 @@ class _PicturePageState extends ModularState<PicturePage, HomeController> {
             },
             child: Stack(
               children: [
-                Container(
+                SizedBox(
                   height: double.infinity,
                   width: double.infinity,
                   child: spaceMedia.mediaType == 'video'

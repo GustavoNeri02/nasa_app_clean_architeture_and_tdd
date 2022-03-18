@@ -7,12 +7,12 @@ void showDescriptionBottomSheet({
 }) {
   showModalBottomSheet(
       context: context,
-      backgroundColor: Color(0xFF3E4c5c).withOpacity(0.9),
+      backgroundColor: const Color(0xFF3E4c5c).withOpacity(0.9),
       builder: (_) {
         return ListView(
           children: [
             Padding(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
                   Text(

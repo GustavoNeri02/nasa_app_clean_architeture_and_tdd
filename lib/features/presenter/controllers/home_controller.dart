@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 import 'package:nasa_app_clean_architeture_and_tdd/core/erros/failures.dart';
 import 'package:nasa_app_clean_architeture_and_tdd/features/domain/entities/space_media_entity.dart';

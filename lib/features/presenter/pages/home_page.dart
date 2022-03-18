@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
                 RoundButton(
                   label: "Select datetime",
                   onTap: () async {
-                    var datePicked = await showDatePicker(
+                    await showDatePicker(
                       helpText: "Select a datetime",
                       context: context,
                       initialDate: DateTime.now(),

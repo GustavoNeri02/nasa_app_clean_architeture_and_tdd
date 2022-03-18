@@ -14,6 +14,7 @@ class RoundButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18),
+          // ignore: deprecated_member_use
           color: Theme.of(context).buttonColor,
         ),
         child: Text(
