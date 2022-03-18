@@ -28,7 +28,8 @@ void main() {
   final tNoParams = NoParams();
   */
 
-  test('should get space media for a given date from the repository', () async {
+  test('should get space media entity for a given date from the repository',
+      () async {
     // Act
     when(() => repository.getSpaceMediaFromDate(tDate))
         .thenAnswer((_) async => const Right(tSpaceMedia));
@@ -39,7 +40,7 @@ void main() {
     verify(() => repository.getSpaceMediaFromDate(tDate)).called(1);
   });
 
-  test('should return a Failure when don\'t succeed', () async {
+  test('should return a ServerFailure when don\'t succeed', () async {
     // Arrange
     when(() => repository.getSpaceMediaFromDate(tDate)).thenAnswer(
         (_) async => Left<Failure, SpaceMediaEntity>(ServerFailure()));
@@ -48,5 +49,15 @@ void main() {
     // Assert
     expect(result, Left(ServerFailure()));
     verify(() => repository.getSpaceMediaFromDate(tDate)).called(1);
+  });
+  test('should return a NullParamFailure when receive a null param', () async {
+    // Arrange
+    when(() => repository.getSpaceMediaFromDate(tDate)).thenAnswer(
+        (_) async => Left<Failure, SpaceMediaEntity>(NullParamFailure()));
+    // Act
+    final result = await usecase.call(null);
+    // Assert
+    expect(result, Left(NullParamFailure()));
+    verifyNever(() => repository.getSpaceMediaFromDate(tDate));
   });
 }

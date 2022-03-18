@@ -11,15 +11,13 @@ class HomeController extends StreamStore<Failure, SpaceMediaEntity> {
       : super(const SpaceMediaEntity(
             description: "", mediaType: "", title: "", mediaUrl: ""));
 
-  getSpaceMediaFromDate(DateTime tDate) async {
-    /*
+  getSpaceMediaFromDate(DateTime? tDate) async {
     setLoading(true);
     final result = await usecase(tDate);
     result.fold((error) => setError(error), (success) => update(success));
     setLoading(false);
-    */
 
-    executeEither(() =>
-        usecase(tDate) as Future<EitherAdapter<Failure, SpaceMediaEntity>>);
+    //executeEither(() =>
+    //    usecase(tDate) as Future<EitherAdapter<Failure, SpaceMediaEntity>>);
   }
 }

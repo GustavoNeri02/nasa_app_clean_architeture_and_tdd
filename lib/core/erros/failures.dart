@@ -7,3 +7,9 @@ class ServerFailure extends Failure {
   @override
   List<Object?> get props => [];
 }
+
+//extensão da abstração
+class NullParamFailure extends Failure {
+  @override
+  List<Object?> get props => [];
+}
